@@ -16,9 +16,7 @@ export default function AuthContextProvider({ children }) {
   );
   const [errorMessage, setErrorMessage] = useState("");
 
-  async function login(e, user) {
-    e.preventDefault();
-
+  async function login(user) {
     try {
       const response = await fetch(`${host}/user/login`, {
         method: "POST",

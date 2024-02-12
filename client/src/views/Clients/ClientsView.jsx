@@ -22,7 +22,9 @@ export default function ClientsView({ clients }) {
             </Grid>
           ))
         ) : (
-          <Skeleton />
+          <Grid item xs={12} md={4} sx={{ p: 1 }}>
+            <Skeleton />
+          </Grid>
         )}
       </Grid>
     </>

@@ -5,7 +5,14 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
-export default function Card({ image, title, description, url, phone }) {
+export default function Card({
+  image,
+  title,
+  description,
+  url,
+  phone,
+  textButton,
+}) {
   return (
     <MuiCard elevation={6}>
       <CardMedia
@@ -40,7 +47,7 @@ export default function Card({ image, title, description, url, phone }) {
             Web
           </a>
         </Button>
-        <Button size="small">Editar</Button>
+        <Button size="small">{textButton}</Button>
       </CardActions>
     </MuiCard>
   );
