@@ -9,6 +9,7 @@ import Events from "./views/Events/Events";
 import AuthContextProvider from "./contexts/AuthContext";
 import PublicRoutes from "./components/router/PublicRoutes/PublicRoutes";
 import PrivateRoutes from "./components/router/PrivateRoutes/PrivateRoutes";
+import Profile from "./views/Profile/Profile";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
               <Route path="inventario" element={<Inventary />} />
               <Route path="mobiliario" element={<Furnitures />} />
               <Route path="eventos" element={<Events />} />
+              <Route path="profile" element={<Profile />} />
             </Route>
           </Route>
         </Routes>

@@ -18,7 +18,7 @@ userQueries.getUserByEmail = async (email) => {
     conn = await db.createConnection();
     //Devolvemos los cuatro parametros: consulta, parametro, tipo de consulta y conexion
     return await db.query(
-      "select usuarios.password, empleadosclientes.nombre, empleadosclientes.apellidos from usuarios join empleadosclientes on usuarios.id = empleadosclientes.usuarioid where email = ?",
+      "select usuarios.id AS usuarioid , usuarios.password, empleadosclientes.nombre, empleadosclientes.apellidos from usuarios join empleadosclientes on usuarios.id = empleadosclientes.usuarioid where email = ?",
       email,
       "select",
       conn
