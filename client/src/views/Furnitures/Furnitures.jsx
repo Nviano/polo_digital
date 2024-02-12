@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { host } from "../../const/host";
 import FurnituresView from "./FurnituresView";
 
-
 export default function Furnitures() {
   const [furnitures, setFurnitures] = useState(null);
 
