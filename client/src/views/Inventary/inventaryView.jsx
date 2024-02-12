@@ -21,7 +21,6 @@ export default function InventaryView({ inventary }) {
                             name = {inventary.nombre}
                             description = {inventary.marca + " " + inventary.referencia}
                             clienteid = {"Asignado a: " + inventary.razon_social}
-                            // state = {inventary.estado}
                         />
                     </Grid>
                     
