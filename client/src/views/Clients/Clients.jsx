@@ -11,6 +11,7 @@ export default function Clients() {
         const response = await fetch(`${host}/clientes`);
         const clients = await response.json();
         setClients(clients);
+        console.log(clients)
       } catch (error) {
         console.log(error);
       }
@@ -20,3 +21,4 @@ export default function Clients() {
 
   return <ClientsView clients={clients} />;
 }
+
