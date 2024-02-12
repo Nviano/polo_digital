@@ -4,8 +4,9 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import { Link } from "react-router-dom";
 
-export default function Card({ image, title, description, url, phone }) {
+export default function Card({ image, title, description, url, phone, textButton, eventId }) {
   return (
     <MuiCard elevation={6}>
       <CardMedia
@@ -40,7 +41,7 @@ export default function Card({ image, title, description, url, phone }) {
             Web
           </a>
         </Button>
-        <Button size="small">Editar</Button>
+        <Button size="small" component={Link} to={`/eventos/${eventId}`}>{textButton}</Button>
       </CardActions>
     </MuiCard>
   );

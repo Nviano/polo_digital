@@ -9,6 +9,7 @@ import Events from "./views/Events/Events";
 import AuthContextProvider from "./contexts/AuthContext";
 import PublicRoutes from "./components/router/PublicRoutes/PublicRoutes";
 import PrivateRoutes from "./components/router/PrivateRoutes/PrivateRoutes";
+import EventDetail from "./views/EventDetail/EventDetail";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
 
             <Route element={<PublicRoutes />}>
               <Route path="login" element={<Login />} />
+              
             </Route>
 
             <Route element={<PrivateRoutes />}>
@@ -27,6 +29,8 @@ function App() {
               <Route path="inventario" element={<Inventary />} />
               <Route path="mobiliario" element={<Furnitures />} />
               <Route path="eventos" element={<Events />} />
+              <Route path="/eventos/:id" element={<EventDetail />} />
+              
             </Route>
           </Route>
         </Routes>
