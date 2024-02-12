@@ -5,7 +5,7 @@ import CardFurniture from "../../components/CardFurniture/CardFurniture";
 export default function FurnituresView({ furnitures }) {
     return (
         <>
-            <Typography variant="h3" align="center">
+            <Typography variant="h3" align="center" margin={5}>
                 Mobiliario
             </Typography>
             <Grid container item sx={{ display: "flex", justifyContent: "center" }}>
