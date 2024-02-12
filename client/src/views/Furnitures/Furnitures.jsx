@@ -8,9 +8,10 @@ export default function Furnitures() {
   useEffect(() => {
     async function fetchFurnitures() {
       try {
-        const response = await fetch(`${host}/mobiliario`);
+        const response = await fetch(`${host}/gestion/mobiliario`);
         const furnitures = await response.json();
         setFurnitures(furnitures);
+        console.log(furnitures)
       } catch (error) {
         console.log(error);
       }
@@ -18,5 +19,5 @@ export default function Furnitures() {
     fetchFurnitures();
   }, []);
 
-  return <FurnituresView clients={furnitures} />;
+  return <FurnituresView furnitures={furnitures} />;
 }
