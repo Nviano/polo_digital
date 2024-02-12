@@ -15,7 +15,7 @@ export default function Home() {
         const result = await fetch("http://localhost:8000/clientes/carrousel");
         const event = await result.json();
         setEvent(event);
-        console.log(event);
+       
       } catch (error) {
         console.log(error);
       }
