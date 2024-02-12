@@ -1,4 +1,4 @@
-//Home de polo_digital, trae eventos de la bbdd.
+
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
@@ -24,11 +24,23 @@ export default function Home() {
   }, []);
 
 const setting= {
+  arrows:true,
   dots:true,
   infinite:true,
   slidesToShow: 1,
   slidesToScroll: 1,
   autoplay:false,
+  customPaging: i => (
+    <div
+      style={{
+        width: "60px",
+        color: "white",
+        border: "6px blue solid"
+      }}
+    >
+      {i + 1}
+    </div>
+  )
  
 }
 
