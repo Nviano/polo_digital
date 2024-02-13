@@ -37,7 +37,6 @@ export default function EventDetails() {
     async function handleSaveChanges() {
         if (editingEvento) {
             try {
-                console.log(editingEvento)
                 const response = await fetch(`http://localhost:8000/gestion/eventos/${id}`, {
                     method: "POST",
                     body: JSON.stringify(editingEvento),
@@ -75,13 +74,13 @@ export default function EventDetails() {
                                 </Grid>
                             </Grid>
                             <Box sx={{ display: "flex", p: 6, justifyContent: "end" }}>
-                                {!editIsOpen ? (
-                                    <Button variant="contained" onClick={handleOpenEdit}>Editar</Button>
-                                ) : (
+                                {editIsOpen ? (
                                     <>
                                         <Button variant="contained" onClick={handleOpenEdit} sx={{ mr: 2 }}>Cancelar</Button>
                                         <Button variant="contained" onClick={handleSaveChanges}>Guardar</Button>
                                     </>
+                                ) : (
+                                    <Button variant="contained" onClick={handleOpenEdit}>Editar</Button>
                                 )}
                             </Box>
                             {editIsOpen && (
