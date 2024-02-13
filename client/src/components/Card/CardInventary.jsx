@@ -6,7 +6,6 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
 export default function CardInventary({ image, name, description, state, clienteid }) {
-
   return (
     <MuiCard elevation={6}>
       <CardMedia

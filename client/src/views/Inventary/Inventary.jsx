@@ -4,8 +4,6 @@ import InventaryView from "./inventaryView"
 
 export default function Inventary() {
  const [inventary, setInventary] = useState(null);
-
-
  useEffect(() => {
    async function fetchInventary() {
      try {

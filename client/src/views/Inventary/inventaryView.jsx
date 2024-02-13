@@ -22,7 +22,6 @@ export default function InventaryView({ inventary }) {
                             clienteid = {"Asignado a: " + inventary.razon_social}
                         />
                     </Grid>
-                    
                 ))
             ) : (
                 <Skeleton />
