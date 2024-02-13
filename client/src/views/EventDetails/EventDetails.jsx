@@ -2,15 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Box, Button, Grid, Paper, TextField, Typography } from '@mui/material';
 import { host } from "../../const/host"
-
-function BoxComponentsEvent({ label, DataEvent }) {
-    return (
-        <Box sx={{ border: "1px solid black", p: 1, textAlign: "center", borderRadius: "10px", width: "140px" }}>
-            <Typography sx={{ fontWeight: "bold" }}>{label}</Typography>
-            <Typography sx={{ p: 1 }}>{DataEvent}</Typography>
-        </Box>
-    );
-}
+import BoxComponentsEvent from "../../components/BoxComponentsEvent/BoxComponentsEvent"
 
 export default function EventDetails() {
     const [evento, setEvento] = useState(null);
@@ -23,7 +15,6 @@ export default function EventDetails() {
             try {
                 const response = await fetch(`${host}/gestion/eventos/${id}`);
                 const data = await response.json();
-                console.log("response", data[0])
                 setEvento(data[0]);
                 setEditingEvento(data[0]);
             } catch (error) {
