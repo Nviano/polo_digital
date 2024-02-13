@@ -266,30 +266,30 @@ const getEventoById = async (req, res) => {
 };
 
 const updateEvento = async (req, res) => {
-  const { nombre, fecha_inicio, fecha_fin, aforo, clientesid, salaid } =
+  const { eventosnombre, fecha_inicio, fecha_fin, aforo, razon_social, salasnombre } =
     req.body;
-
+  console.log(req.body)
   if (
-    !nombre ||
+    !eventosnombre ||
     !fecha_inicio ||
     !fecha_fin ||
     !aforo ||
-    !clientesid ||
-    !salaid
+    !razon_social ||
+    !salasnombre
   )
     return res.status(400).send({ message: "Error al recibir el body" });
 
   try {
     const id = parseInt(req.params.id);
 
-    const clienteId = await dao.getClienteId(clientesid);
+    const clienteId = await dao.getClienteId(razon_social);
 
     if (clienteId.length < 1)
       return res
         .status(409)
         .send({ message: `Nombre de la empresa no coincide con el registro` });
 
-    const salaId = await dao.getSalaId(salaid);
+    const salaId = await dao.getSalaId(salasnombre);
 
     if (salaId.length < 1)
       return res
