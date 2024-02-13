@@ -1,14 +1,15 @@
 import { useState, useEffect } from "react";
 import { host } from "../../const/host"
+import { inventaryStates } from "../../const/inventaryStates";
 import { useParams } from "react-router-dom";
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 import { Box, Button, Grid, Paper, TextField, Typography } from "@mui/material";
 import BoxComponentsInventary from "../../components/BoxComponentsInventary/BoxComponentsInventary";
 export default function InventaryDetails() {
 
-    const [inventaryObj, setinventaryObj] = useState(null);
-    const [editingInventary, seteditingInventary] = useState(inventaryObj);
-    const [isEditing, setisEditing] = useState(false);
+    const [inventaryObj, setInventaryObj] = useState(null);
+    const [editingInventary, setEditingInventary] = useState(inventaryObj);
+    const [isEditing, setIsEditing] = useState(false);
     const { id } = useParams()
 
     useEffect(() => {
@@ -16,7 +17,7 @@ export default function InventaryDetails() {
             try {
                 const response = await fetch(`${host}/gestion/inventario/${id}`,);
                 const inventaryObj = await response.json();
-                setinventaryObj(inventaryObj[0]);
+                setInventaryObj(inventaryObj[0]);
             } catch (error) {
                 console.log(error);
             }
@@ -25,15 +26,15 @@ export default function InventaryDetails() {
     }, [inventaryObj]);
 
     function handleEdit() {
-        isEditing ? setisEditing(false) : setisEditing(true)
+        setIsEditing(!isEditing);
     }
 
     function handleInputs(e) {
-        seteditingInventary({ ...inventaryObj, [e.target.name]: e.target.value });
+        setEditingInventary({ ...inventaryObj, [e.target.name]: e.target.value });
     }
 
     async function fetchUpdateInventary() {
-        if (editingInventary.estado === "Activo") {
+        if (editingInventary.estado === "") {
             editingInventary.estado = "1"
         } else if (editingInventary.estado === "Inactivo") {
             editingInventary.estado = "0"
@@ -59,7 +60,7 @@ export default function InventaryDetails() {
             const respuesta = await response.json()
             if (response.ok) {
                 toast.success(respuesta.message)
-                setinventaryObj(editingInventary)
+                setInventaryObj(editingInventary)
             }
             else toast.error(respuesta.message)
 
@@ -70,7 +71,6 @@ export default function InventaryDetails() {
 
     return (
         <>
-            <Toaster />
             {inventaryObj && (<Grid container display="flex" justifyContent="center" p={6}>
                 <Grid item md={12}>
                     <Paper elevation={6} sx={{ p: 2, textAlign: "center" }}>
@@ -82,7 +82,7 @@ export default function InventaryDetails() {
                             <Grid item sx={{ display: "flex", pt: 6, justifyContent: "space-around" }}>
                                 <BoxComponentsInventary label="Referencia" DataInventary={inventaryObj.referencia} />
                                 <BoxComponentsInventary label="Marca" DataInventary={inventaryObj.marca} />
-                                <BoxComponentsInventary label="Estado" DataInventary={inventaryObj.estado ? "Activo" : "Inactivo"} />
+                                <BoxComponentsInventary label="Estado" DataInventary={inventaryStates[inventaryObj.estado]} />
                                 <BoxComponentsInventary label="Cliente asignado" DataInventary={inventaryObj.razon_social} />
                             </Grid>
                         </Grid>
