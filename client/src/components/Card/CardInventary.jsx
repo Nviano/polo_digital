@@ -1,53 +1,51 @@
-import { Card as MuiCard } from "@mui/material";
+import { Link, Card as MuiCard } from "@mui/material";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
-export default function Card({
-  image,
-  title,
-  description,
-  url,
-  phone,
-  textButton,
-}) {
+export default function CardInventary({ image, name, description, state, clienteid }) {
+
   return (
     <MuiCard elevation={6}>
       <CardMedia
         component="img"
-        alt={title}
-        height="140"
+        alt={name}
+        height="80"
         image={image}
         sx={{ objectFit: "contain", pt: 1.5 }}
       />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          {title}
+        <Typography 
+          gutterBottom 
+          variant="h5" 
+          component="div" 
+          sx={{ color: "darkcyan",
+            height: "2lh",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+          }}>
+          {name}
+          
         </Typography>
         <Typography
           variant="body2"
           color="text.secondary"
-          sx={{
-            height: "3lh",
-            overflow: "hidden",
-            textOverflow: "ellipsis",
-          }}
         >
           {description}
         </Typography>
+        <Typography variant="body2" color="text.secondary" fontWeight={"bold"}>
+          {clienteid}
+        </Typography>
         <Typography variant="body2" color="text.secondary">
-          {phone}
+          {state}
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">
-          <a href={url} target="_blank">
-            Web
-          </a>
-        </Button>
-        <Button size="small">{textButton}</Button>
+        <Link to="/gestion/inventario/:id">
+         <Button size="small" >Ver detalle</Button>
+        </Link>
       </CardActions>
     </MuiCard>
   );

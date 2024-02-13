@@ -132,7 +132,7 @@ gestionQueries.getInventario = async () => {
   let conn = null;
   try {
     conn = await db.createConnection();
-    return await db.query("SELECT * FROM inventario", null, "select", conn);
+    return await db.query("SELECT inventario.id, inventario.nombre, inventario.referencia, inventario.marca, inventario.icon, inventario.clienteid, inventario.estado, clientes.razon_social FROM inventario JOIN clientes ON inventario.clienteid = clientes.id ", null, "select", conn);
   } catch (e) {
     throw new Error(e);
   } finally {

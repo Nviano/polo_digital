@@ -2,6 +2,7 @@ import { Grid, Typography } from "@mui/material";
 import Skeleton from "../../components/ui/Skeleton/Skeleton";
 import Card from "../../components/Card/Card";
 import { host } from "../../const/host";
+
 export default function ClientsView({ clients }) {
   return (
     <>
