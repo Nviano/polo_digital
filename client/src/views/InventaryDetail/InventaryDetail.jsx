@@ -4,8 +4,9 @@ import { inventaryStates } from "../../const/inventaryStates";
 import { useParams } from "react-router-dom";
 import toast from 'react-hot-toast';
 import { Box, Button, Grid, Paper, TextField, Typography } from "@mui/material";
-import BoxComponentsInventary from "../../components/BoxComponentsInventary/BoxComponentsInventary";
-export default function InventaryDetails() {
+import BoxComponents from "../../components/BoxComponents/BoxComponents";
+
+export default function InventaryDetail() {
 
     const [inventaryObj, setInventaryObj] = useState(null);
     const [editingInventary, setEditingInventary] = useState(inventaryObj);
@@ -80,10 +81,10 @@ export default function InventaryDetails() {
                                 <Typography>{inventaryObj.nombre}</Typography>
                             </Grid>
                             <Grid item sx={{ display: "flex", pt: 6, justifyContent: "space-around" }}>
-                                <BoxComponentsInventary label="Referencia" DataInventary={inventaryObj.referencia} />
-                                <BoxComponentsInventary label="Marca" DataInventary={inventaryObj.marca} />
-                                <BoxComponentsInventary label="Estado" DataInventary={inventaryStates[inventaryObj.estado]} />
-                                <BoxComponentsInventary label="Cliente asignado" DataInventary={inventaryObj.razon_social} />
+                                <BoxComponents label="Referencia" data={inventaryObj.referencia} />
+                                <BoxComponents label="Marca" data={inventaryObj.marca} />
+                                <BoxComponents label="Estado" data={inventaryStates[inventaryObj.estado]} />
+                                <BoxComponents label="Cliente asignado" data={inventaryObj.razon_social} />
                             </Grid>
                         </Grid>
                         <Box sx={{ display: "flex", p: 6, justifyContent: "end" }}>

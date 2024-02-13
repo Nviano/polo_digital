@@ -36,10 +36,10 @@ export default function ClientDetailView({
                 padding: "24px",
               }}
             >
-              <BoxComponents label="Empleados" Data={client.numero_empleados} />
-              <BoxComponents label="Sector" Data={client.sector} />
-              <BoxComponents label="Teléfono" Data={client.telefono} />
-              <BoxComponents label="CIF" Data={client.CIF} />
+              <BoxComponents label="Empleados" data={client.numero_empleados} />
+              <BoxComponents label="Sector" data={client.sector} />
+              <BoxComponents label="Teléfono" data={client.telefono} />
+              <BoxComponents label="CIF" data={client.CIF} />
               <Box>
                 <Button variant="contained" onClick={handleUpdate}>
                   Editar

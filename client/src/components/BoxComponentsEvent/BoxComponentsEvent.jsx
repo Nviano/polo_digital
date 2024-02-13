@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
 
-export default function BoxComponentsEvent({ label, DataEvent }) {
+export default function BoxComponentsEvent({ label, Dat }) {
     return (
         <Box sx={{ border: "1px solid black", p: 1, textAlign: "center", borderRadius: "10px", width: "140px" }}>
             <Typography sx={{ fontWeight: "bold" }}>{label}</Typography>

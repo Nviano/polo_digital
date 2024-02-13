@@ -1,10 +1,102 @@
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { Box, Button, Grid, Paper, TextField, Typography } from '@mui/material';
+import { host } from "../../const/host"
+import BoxComponents from "../../components/BoxComponents/BoxComponents"
+
 export default function EventDetail() {
+    const [evento, setEvento] = useState(null);
+    const [editingEvento, setEditingEvento] = useState(evento);
+    const [editIsOpen, setEditIsOpen] = useState(false);
+    const { id } = useParams();
+    useEffect(() => {
+        async function fetchEvento() {
+            try {
+                const response = await fetch(`${host}/gestion/eventos/${id}`);
+                const data = await response.json();
+                setEvento(data);
+                setEditingEvento(data);
+            } catch (error) {
+                console.log(error.message);
+            }
+        }
+        fetchEvento();
+    }, [id]);
+
+    const image = evento ? `http://localhost:8000${evento.eventoimage}` : "";
+
+    function handleOpenEdit() {
+        setEditIsOpen(!editIsOpen);
+    }
+
+    function handleInputs(e) {
+        const { name, value } = e.target;
+        setEditingEvento(prev => ({ ...prev, [name]: value }));
+    }
+
+    async function handleSaveChanges() {
+        if (editingEvento) {
+            try {
+                const response = await fetch(`http://localhost:8000/gestion/eventos/${id}`, {
+                    method: "POST",
+                    body: JSON.stringify(editingEvento),
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                });
+                if (response.ok) {
+                    setEvento(editingEvento);
+                    setEditIsOpen(false);
+                }
+            } catch (error) {
+                console.log(error.message);
+            }
+        }
+    }
+
     return (
-        <div>
-         
-            <h2>Detalles del Evento</h2>
-          
-        </div>
+        <>
+            {evento && (
+                <Grid container display="flex" justifyContent="center" p={6}>
+                    <Grid item md={12}>
+                        <Paper elevation={6} sx={{ p: 2, textAlign: "center" }}>
+                            <Grid item sx={{ display: "flex", flexDirection: "column", p: 6 }}>
+                                <Box item sx={{ display: "flex", flexDirection: "column", p: 2, alignItems: "center", justifyContent: "space-around", gap: 4 }}>
+                                    <img src={image} alt="Evento" style={{ maxWidth: '800px' }} />
+                                    <Typography variant="h5">{evento.eventosnombre}</Typography>
+                                </Box>
+                                <Grid item sx={{ display: "flex", pt: 6, justifyContent: "space-around" }}>
+                                    <BoxComponents label="Fecha de inicio" data={evento.fecha_inicio} />
+                                    <BoxComponents label="Fecha de fin" data={evento.fecha_fin} />
+                                    <BoxComponents label="Aforo" data={evento.aforo} />
+                                    <BoxComponents label="Organizador" data={evento.razon_social} />
+                                    <BoxComponents label="Ubicación" data={evento.salasnombre} />
+                                </Grid>
+                            </Grid>
+                            <Box sx={{ display: "flex", p: 6, justifyContent: "end" }}>
+                                {editIsOpen ? (
+                                    <>
+                                        <Button variant="contained" onClick={handleOpenEdit} sx={{ mr: 2 }}>Cancelar</Button>
+                                        <Button variant="contained" onClick={handleSaveChanges}>Guardar</Button>
+                                    </>
+                                ) : (
+                                    <Button variant="contained" onClick={handleOpenEdit}>Editar</Button>
+                                )}
+                            </Box>
+                            {editIsOpen && (
+                                <Box component="form" sx={{ display: 'flex', flexDirection: 'column', gap: '10px', p: 2 }}>
+                                    <TextField label="Nombre del evento" variant="outlined" defaultValue={editingEvento.eventosnombre} fullWidth onChange={handleInputs} name="eventosnombre" />
+                                    <TextField label="" type="text" defaultValue={editingEvento.fecha_inicio} fullWidth onChange={handleInputs} name="fecha_inicio" />
+                                    <TextField label="" type="text" defaultValue={editingEvento.fecha_fin} fullWidth onChange={handleInputs} name="fecha_fin" />
+                                    <TextField label="Aforo" type="number" defaultValue={editingEvento.aforo} fullWidth onChange={handleInputs} name="aforo" />
+                                    <TextField label="Organizador" type="text" defaultValue={editingEvento.razon_social} fullWidth onChange={handleInputs} name="razon_social" />
+                                    <TextField label="Ubicación" type="text" defaultValue={editingEvento.salasnombre} fullWidth onChange={handleInputs} name="salasnombre" />
+                                </Box>
+                            )}
+                        </Paper>
+                    </Grid>
+                </Grid>
+            )}
+        </>
     );
 }
-
