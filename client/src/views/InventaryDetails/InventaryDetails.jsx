@@ -34,9 +34,9 @@ export default function InventaryDetails() {
     }
 
     async function fetchUpdateInventary() {
-        if (editingInventary.estado === "") {
+        if (editingInventary.estado === "Nuevo") {
             editingInventary.estado = "1"
-        } else if (editingInventary.estado === "Inactivo") {
+        } else if (editingInventary.estado === "Usado") {
             editingInventary.estado = "0"
         }
 
@@ -61,6 +61,7 @@ export default function InventaryDetails() {
             if (response.ok) {
                 toast.success(respuesta.message)
                 setInventaryObj(editingInventary)
+                setIsEditing(!isEditing);
             }
             else toast.error(respuesta.message)
 
