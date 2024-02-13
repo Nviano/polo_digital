@@ -20,4 +20,3 @@ export default function Clients() {
 
   return <ClientsView clients={clients} />;
 }
-

@@ -7,7 +7,6 @@ import CardInventary from "../../components/Card/CardInventary"
 export default function InventaryView({ inventary }) {
        
     return (
-        
         <>
         <Typography variant="h3" align="center">
             Inventario
