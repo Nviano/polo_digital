@@ -52,7 +52,7 @@ const getMobiliarioById = async (req, res) => {
   try {
     const mobiliario = await dao.getMobiliarioById(mobiliarioId);
 
-    return res.send(mobiliario);
+    return res.send(mobiliario[0]);
   } catch (error) {
     console.log(error);
 

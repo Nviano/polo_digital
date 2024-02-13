@@ -4,7 +4,7 @@ import Home from "./views/Home/Home";
 import Login from "./views/Login/Login";
 import Clients from "./views/Clients/Clients";
 import Inventary from "./views/Inventary/Inventary";
-import Furnitures from "./views/Furnitures/Furnitures";
+// import Furnitures from "./views/Furnitures/Furnitures";
 import Events from "./views/Events/Events";
 import EventDetails from "./views/EventDetails/EventDetails";
 import AuthContextProvider from "./contexts/AuthContext";
@@ -14,6 +14,7 @@ import { Toaster } from "react-hot-toast";
 import Profile from "./views/Profile/Profile";
 import ClientDetail from "./views/ClientDetail/ClientDetail";
 import InventaryDetails from "./views/InventaryDetails/InventaryDetails";
+import ModifyFurnitures from "./views/Furnitures/ModidyFurniture";
 
 function App() {
   return (
@@ -35,12 +36,12 @@ function App() {
                 <Route index element={<Inventary />} />
                 <Route path=":id" element={<InventaryDetails />} />
               </Route>
-              <Route path="mobiliario" element={<Furnitures />} />
               <Route path="profile" element={<Profile />} />
               <Route path="eventos">
                 <Route index element={<Events />} />
                 <Route path=":id" element={<EventDetails />} />
               </Route>
+              <Route path="mobiliario" element={<ModifyFurnitures />} />
             </Route>
           </Route>
         </Routes>
