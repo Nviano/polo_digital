@@ -7,7 +7,6 @@ import { Toaster } from "react-hot-toast";
 export default function Layout() {
   return (
     <>
-      <Toaster position="top-center" />
       <Header />
       <Grid
         container
