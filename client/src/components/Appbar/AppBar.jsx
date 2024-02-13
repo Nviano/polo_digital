@@ -23,6 +23,13 @@ const pages = [
 ];
 
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
+//const settings de arriba es igual a :
+//const settings=[
+//{label: 'Profile', linkTo: '/profile'},
+//{label: 'Account', linkTo: '/account'},
+//{label: 'Dashboard', linkTo: '/dashboard'},
+//{label: 'Logout', linkTo: '/logout'},
+//]
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = useState(null);

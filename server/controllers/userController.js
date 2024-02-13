@@ -27,7 +27,7 @@ const loginUser = async (req, res) => {
     // Si es correcta generamos el token y lo devolvemos al cliente
     // Construimos el JWT con el id, email y rol del usuario
     const jwtConstructor = new SignJWT({
-      id: user.id,
+      id: user.usuarioid,
       email,
       role: user.userRole,
     });
@@ -43,7 +43,9 @@ const loginUser = async (req, res) => {
       .setExpirationTime("1h")
       .sign(encoder.encode(process.env.JWT_SECRET));
     //Si todo es correcto enviamos la respuesta. 200 OK
+    console.log(user);
     const userToSend = {
+      id: user.usuarioid,
       nombre: user.nombre,
       apellidos: user.apellidos,
     };
