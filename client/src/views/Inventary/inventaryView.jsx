@@ -2,6 +2,7 @@ import { Grid, Typography} from "@mui/material"
 import Skeleton from "../../components/ui/Skeleton/Skeleton"
 import { host } from "../../const/host"
 import CardInventary from "../../components/Card/CardInventary"
+import { Link } from "react-router-dom"
 
 
 export default function InventaryView({ inventary }) {
@@ -20,6 +21,7 @@ export default function InventaryView({ inventary }) {
                             name = {inventary.nombre}
                             description = {inventary.marca + " " + inventary.referencia}
                             clienteid = {"Asignado a: " + inventary.razon_social}
+                            linkTo={`${inventary.id}`}
                         />
                     </Grid>
                     
