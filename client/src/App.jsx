@@ -4,7 +4,6 @@ import Home from "./views/Home/Home";
 import Login from "./views/Login/Login";
 import Clients from "./views/Clients/Clients";
 import Inventary from "./views/Inventary/Inventary";
-// import Furnitures from "./views/Furnitures/Furnitures";
 import Events from "./views/Events/Events";
 import EventDetails from "./views/EventDetails/EventDetails";
 import AuthContextProvider from "./contexts/AuthContext";
