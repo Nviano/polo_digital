@@ -67,9 +67,9 @@ const getUpdate = async (req, res) => {
 };
 
 const updateClient = async (req, res) => {
-  const { razon_social, CIF, sector, telefono, numeroempleados } = req.body;
+  const { razon_social, CIF, sector, telefono, numero_empleados } = req.body;
 
-  if (!razon_social || !CIF || !sector || !numeroempleados || !telefono)
+  if (!razon_social || !CIF || !sector || !numero_empleados || !telefono)
     return res.status(400).send({ message: "Error al recibir el body" });
 
   try {

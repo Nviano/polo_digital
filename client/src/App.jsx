@@ -3,6 +3,7 @@ import Layout from "./components/Layout/Layout";
 import Home from "./views/Home/Home";
 import Login from "./views/Login/Login";
 import Clients from "./views/Clients/Clients";
+
 import Inventary from "./views/Inventary/Inventary";
 import Furnitures from "./views/Furnitures/Furnitures";
 import Events from "./views/Events/Events";
@@ -11,6 +12,7 @@ import PublicRoutes from "./components/router/PublicRoutes/PublicRoutes";
 import PrivateRoutes from "./components/router/PrivateRoutes/PrivateRoutes";
 import { Toaster } from "react-hot-toast";
 import Profile from "./views/Profile/Profile";
+import ClientDetail from "./views/ClientDetail/ClientDetail";
 
 function App() {
   return (
@@ -25,8 +27,12 @@ function App() {
             </Route>
 
             <Route element={<PrivateRoutes />}>
-              <Route path="clientes" element={<Clients />} />
+              <Route path="clientes">
+                <Route index element={<Clients />} />
+                <Route path=":id" element={<ClientDetail />} />
+              </Route>
               <Route path="inventario" element={<Inventary />} />
+
               <Route path="mobiliario" element={<Furnitures />} />
               <Route path="eventos" element={<Events />} />
               <Route path="profile" element={<Profile />} />
