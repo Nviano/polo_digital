@@ -296,7 +296,7 @@ gestionQueries.getEventoById = async (id) => {
     conn = await db.createConnection();
 
     return await db.query(
-      "SELECT eventos.id, eventos.nombre AS eventosnombre, eventos.fecha_inicio, eventos.fecha_fin, eventos.aforo, clientes.razon_social, salas.nombre AS salasnombre FROM eventos JOIN clientes ON clientes.id = eventos.clientesid JOIN salas ON eventos.salaid = salas.id WHERE eventos.id = ?",
+      "SELECT eventos.id, eventos.nombre AS eventosnombre, eventos.fecha_inicio, eventos.fecha_fin, eventos.aforo, clientes.razon_social, salas.nombre AS salasnombre, eventos.images AS eventoimage FROM eventos JOIN clientes ON clientes.id = eventos.clientesid JOIN salas ON eventos.salaid = salas.id WHERE eventos.id = ?",
       id,
       "select",
       conn
