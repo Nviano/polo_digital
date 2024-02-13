@@ -30,17 +30,8 @@ const setting= {
   slidesToShow: 1,
   slidesToScroll: 1,
   autoplay:false,
-  customPaging: i => (
-    <div
-      style={{
-        width: "60px",
-        color: "white",
-        border: "6px blue solid"
-      }}
-    >
-      {i + 1}
-    </div>
-  )
+  
+
  
 }
 
