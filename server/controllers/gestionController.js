@@ -257,7 +257,7 @@ const getEventoById = async (req, res) => {
   try {
     const evento = await dao.getEventoById(eventoId);
     console.log(evento);
-    return res.send(evento);
+    return res.send(evento[0]);
   } catch (error) {
     console.log(error);
 

@@ -9,14 +9,13 @@ export default function EventDetails() {
     const [editingEvento, setEditingEvento] = useState(evento);
     const [editIsOpen, setEditIsOpen] = useState(false);
     const { id } = useParams();
-
     useEffect(() => {
         async function fetchEvento() {
             try {
                 const response = await fetch(`${host}/gestion/eventos/${id}`);
                 const data = await response.json();
-                setEvento(data[0]);
-                setEditingEvento(data[0]);
+                setEvento(data);
+                setEditingEvento(data);
             } catch (error) {
                 console.log(error.message);
             }
