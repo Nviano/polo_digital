@@ -9,7 +9,7 @@ export default function ClientDetail() {
   const [client, setClient] = useState(null);
   const [editingClient, setEditingClient] = useState(client);
   const [isUpdated, setIsUpdated] = useState(false);
-    
+
   function handleUpdate() {
     setIsUpdated(!isUpdated);
   }
@@ -18,23 +18,23 @@ export default function ClientDetail() {
   }
 
   async function updateClient(e) {
-    e.preventDefault()
-    console.log(editingClient)
-    try{
-      const response =  await fetch(`${host}/clientes/update/${id}`, {
-            method: 'POST',
-            body: JSON.stringify(editingClient),
-            headers: {
-                'Content-Type': 'application/json'
-            }});
-        const result = await response.json();
-        if(result.status === 200){
-            setClient(editingClient)
-            setIsUpdated(!isUpdated)
-        }
-    }catch(error){
-        console.log(error)
-  }
+    e.preventDefault();
+    try {
+      const response = await fetch(`${host}/clientes/update/${id}`, {
+        method: "POST",
+        body: JSON.stringify(editingClient),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const result = await response.json();
+      if (result.status === 200) {
+        setClient(editingClient);
+        setIsUpdated(!isUpdated);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   useEffect(() => {

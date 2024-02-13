@@ -67,7 +67,6 @@ const getUpdate = async (req, res) => {
 };
 
 const updateClient = async (req, res) => {
-  console.log(req.body)
   const { razon_social, CIF, sector, telefono, numero_empleados } = req.body;
 
   if (!razon_social || !CIF || !sector || !numero_empleados || !telefono)

@@ -8,7 +8,6 @@ export default function ClientDetailView({
   isUpdated,
   updateClient,
   modifyClient,
-  
 }) {
   return (
     <Grid>
@@ -60,37 +59,37 @@ export default function ClientDetailView({
             marginLeft: "32px",
             padding: "24px",
           }}
-          onSubmit={(e) =>updateClient(e)}
+          onSubmit={(e) => updateClient(e)}
         >
           <TextField
             label="Razon social"
             defaultValue={client.razon_social}
             name="razon_social"
-            onChange={(e) =>modifyClient(e)}
+            onChange={(e) => modifyClient(e)}
           ></TextField>
           <TextField
             label="Empleados"
             defaultValue={client.numero_empleados}
             name="numeroempleados"
-            onChange={(e) =>modifyClient(e)}
+            onChange={(e) => modifyClient(e)}
           ></TextField>
           <TextField
             label="Sector"
             defaultValue={client.sector}
             name="sector"
-            onChange={(e) =>modifyClient(e)}
+            onChange={(e) => modifyClient(e)}
           ></TextField>
           <TextField
             label="Teléfono"
             defaultValue={client.telefono}
             name="telefono"
-            onChange={(e) =>modifyClient(e)}
+            onChange={(e) => modifyClient(e)}
           ></TextField>
           <TextField
             label="CIF"
             defaultValue={client.CIF}
             name="CIF"
-            onChange={(e) =>modifyClient(e)}
+            onChange={(e) => modifyClient(e)}
           ></TextField>
           <Button variant="contained" type="submit">
             Guardar
