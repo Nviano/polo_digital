@@ -1,5 +1,6 @@
 import { createContext, useState, useContext } from "react";
 import { host } from "../const/host";
+import toast from "react-hot-toast";
 
 const AuthContext = createContext({
   user: null,
@@ -29,8 +30,11 @@ export default function AuthContextProvider({ children }) {
       if (response.ok) {
         const userLogged = await response.json();
         setUser(userLogged);
+        
         localStorage.setItem("user", JSON.stringify(userLogged));
         setErrorMessage("");
+        toast(`Bienvenido de nuevo ${userLogged.nombre}`)
+        
       } else {
         setErrorMessage(response.message);
       }
@@ -40,8 +44,12 @@ export default function AuthContextProvider({ children }) {
   }
 
   function logout() {
+    const username = localStorage.getItem("user");
+    const name = JSON.parse(username)
+    toast(`Hasta la proxima ${name.nombre}`)
     setUser(null);
     localStorage.removeItem("user");
+    
   }
 
   const value = {
