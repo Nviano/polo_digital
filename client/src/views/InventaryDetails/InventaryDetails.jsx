@@ -3,7 +3,7 @@ import { host } from "../../const/host"
 import { inventaryStates } from "../../const/inventaryStates";
 import { useParams } from "react-router-dom";
 import toast from 'react-hot-toast';
-import { Box, Button, Grid, Paper, TextField, Typography } from "@mui/material";
+import { Box, Button, Grid, InputLabel, MenuItem, Paper, Select, TextField, Typography } from "@mui/material";
 import BoxComponentsInventary from "../../components/BoxComponentsInventary/BoxComponentsInventary";
 export default function InventaryDetails() {
 
@@ -77,8 +77,8 @@ export default function InventaryDetails() {
                     <Paper elevation={6} sx={{ p: 2, textAlign: "center" }}>
                         <Grid item sx={{ display: "flex", flexDirection: "column", p: 6 }}>
                             <Grid item sx={{ display: "flex", p: 2, alignItems: "center", justifyContent: "space-around" }}>
-                                <img src="https://via.placeholder.com/300" alt="imagen" />
-                                <Typography>{inventaryObj.nombre}</Typography>
+                                <img src="https://picsum.photos/300" alt="imagen" />
+                                <Typography variant="h4" sx={{ fontWeight: "bold", p: 2, textAlign: "center" }}>{inventaryObj.nombre}</Typography>
                             </Grid>
                             <Grid item sx={{ display: "flex", pt: 6, justifyContent: "space-around" }}>
                                 <BoxComponentsInventary label="Referencia" DataInventary={inventaryObj.referencia} />
@@ -90,40 +90,44 @@ export default function InventaryDetails() {
                         <Box sx={{ display: "flex", p: 6, justifyContent: "end" }}>
                             <Button variant="contained" onClick={handleEdit}>Editar</Button>
                         </Box>
-                        {isEditing && (<Box sx={{ display: "flex", p: 2, justifyContent: "space-around" }}>
-                            <Box sx={{ display: "flex", p: 2, justifyContent: "space-around" }}>
+                        {isEditing && (<Box component="form" sx={{ display: 'flex', flexDirection: 'column', gap: '10px', p: 2 }}>
+                            <Box component="form" sx={{ display: 'flex', flexDirection: 'column', gap: '10px', p: 2 }}>
                                 <TextField
                                     id="outlined-multiline-static"
                                     name="nombre"
                                     label="Nombre"
                                     defaultValue={inventaryObj.nombre}
+                                    fullWidth
                                     onChange={(e) => handleInputs(e)} />
                                 <TextField
                                     id="outlined-multiline-static"
                                     name="referencia"
                                     label="Referencia"
                                     defaultValue={inventaryObj.referencia}
+                                    fullWidth
                                     onChange={(e) => handleInputs(e)} />
                                 <TextField
                                     id="outlined-multiline-static"
                                     name="marca"
                                     label="Marca"
                                     defaultValue={inventaryObj.marca}
+                                    fullWidth
                                     onChange={(e) => handleInputs(e)} />
-                                <TextField
-                                    id="outlined-multiline-static"
-                                    name="estado"
-                                    label="Estado"
-                                    defaultValue={inventaryObj.estado ? "Activo" : "Inactivo"}
-                                    onChange={(e) => handleInputs(e)} />
+                                    <InputLabel id="demo-simple-select-label">Age</InputLabel>
+                                <Select value={inventaryObj.estado} onChange={(e) => handleInputs(e)} name="estado" label="Estado" defaultValue={inventaryObj.estado} fullWidth>
+                                    {Object.entries(inventaryStates).map(([key, value]) => (
+                                        <MenuItem key={key} value={key}>{value}</MenuItem>
+                                    ))}
+                                </Select>
                                 <TextField
                                     id="outlined-multiline-static"
                                     name="razon_social"
                                     label="Cliente Asignado"
                                     defaultValue={inventaryObj.razon_social}
+                                    fullWidth
                                     onChange={(e) => handleInputs(e)} />
                             </Box>
-                            <Box sx={{ display: "flex", p: 2, justifyContent: "end" }}>
+                            <Box sx={{ display: "flex", p: 2, justifyContent: "end", gap: 2 }}>
                                 <Button variant="contained" onClick={handleEdit}>Cancelar</Button>
                                 <Button variant="contained" onClick={fetchUpdateInventary}>Guardar</Button>
                             </Box>
