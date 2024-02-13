@@ -28,8 +28,11 @@ function App() {
               <Route path="clientes" element={<Clients />} />
               <Route path="inventario" element={<Inventary />} />
               <Route path="mobiliario" element={<Furnitures />} />
-              <Route path="eventos" element={<Events />} />
-              <Route path="/eventos/:id" element={<EventDetail />} />
+              <Route path="/eventos" element={<Events />}>
+                <Route index element={<Events/>} />
+                <Route path=":id" element={<EventDetail />} />
+              </Route>
+              
               
             </Route>
           </Route>

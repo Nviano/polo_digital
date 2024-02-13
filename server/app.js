@@ -19,7 +19,7 @@ app.use(express.static("public"));
 app.use("/user", userRouter);
 app.use("/clientes", clientesRouter);
 app.use("/gestion", gestionRouter);
-app.use("/eventos", gestionRouter);
+
 
 //Levantamos el puerto 8000;
 app.listen(PORT, () => console.log(`Server in port ${PORT}`));
