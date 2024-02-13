@@ -44,15 +44,25 @@ export default function ClientDetailView({
             </Grid>
           </Grid>
           <Box sx={{ display: "flex", p: 6, justifyContent: "end" }}>
-                                {isUpdated ? (
-                                    <>
-                                        <Button variant="contained" onClick={handleUpdate} sx={{ mr: 2 }}>Cancelar</Button>
-                                        <Button variant="contained" onClick={updateClient}>Guardar</Button>
-                                    </>
-                                ) : (
-                                    <Button variant="contained" onClick={handleUpdate}>Editar</Button>
-                                )}
-                            </Box>
+            {isUpdated ? (
+              <>
+                <Button
+                  variant="contained"
+                  onClick={handleUpdate}
+                  sx={{ mr: 2 }}
+                >
+                  Cancelar
+                </Button>
+                <Button variant="contained" onClick={() => updateClient()}>
+                  Guardar
+                </Button>
+              </>
+            ) : (
+              <Button variant="contained" onClick={handleUpdate}>
+                Editar
+              </Button>
+            )}
+          </Box>
         </Paper>
       </Grid>
       {isUpdated ? (
