@@ -4,11 +4,12 @@ import Home from "./views/Home/Home";
 import Login from "./views/Login/Login";
 import Clients from "./views/Clients/Clients";
 import Inventary from "./views/Inventary/Inventary";
-import Furnitures from "./views/Furnitures/Furnitures";
+// import Furnitures from "./views/Furnitures/Furnitures";
 import Events from "./views/Events/Events";
 import AuthContextProvider from "./contexts/AuthContext";
 import PublicRoutes from "./components/router/PublicRoutes/PublicRoutes";
 import PrivateRoutes from "./components/router/PrivateRoutes/PrivateRoutes";
+import ModifyFurnitures from "./views/Furnitures/ModidyFurniture";
 
 function App() {
   return (
@@ -25,7 +26,11 @@ function App() {
             <Route element={<PrivateRoutes />}>
               <Route path="clientes" element={<Clients />} />
               <Route path="inventario" element={<Inventary />} />
-              <Route path="mobiliario" element={<Furnitures />} />
+              {/* <Route path="mobiliario" element={<Furnitures />} /> */}
+              <Route path="mobiliario" element={<ModifyFurnitures />} />
+             
+              
+
               <Route path="eventos" element={<Events />} />
             </Route>
           </Route>

@@ -45,3 +45,4 @@ export default function Card({ image, title, description, url, phone }) {
     </MuiCard>
   );
 }
+
