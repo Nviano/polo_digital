@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { host } from "../../const/host";
 import ClientDetailView from "./ClientDetailView";
 import Skeleton from "../../components/ui/Skeleton/Skeleton";
+import toast from "react-hot-toast";
 
 export default function ClientDetail() {
   const { id } = useParams();
@@ -18,6 +19,7 @@ export default function ClientDetail() {
   }
 
   async function updateClient() {
+
     try {
       const response = await fetch(`${host}/clientes/update/${id}`, {
         method: "POST",
@@ -28,11 +30,13 @@ export default function ClientDetail() {
       });
   
       if (response.status === 200) {
+        toast.success("Información actualizada");
         setClient(editingClient);
         setIsUpdated(!isUpdated);
       }
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
+      toast.error(error.message);
     }
   }
 
@@ -44,6 +48,7 @@ export default function ClientDetail() {
         setClient(client[0]);
       } catch (error) {
         console.log(error);
+        toast.error(error.message);
       }
     }
     fetchClient();
