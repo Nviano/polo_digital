@@ -15,7 +15,7 @@ export default function EventsView({ events }) {
                             <Card
                                 image={`${host}/${event.images}`}
                                 title={event.nombre}
-                                description={`Fecha inicio: ${event.fecha_inicio} / Fecha fin: ${event.fecha_fin}  Aforo: ${event.aforo}`}
+                                description={`Fecha inicio: ${event.fecha_inicio} / Fecha fin: ${event.fecha_fin} / Aforo: ${event.aforo}`}
                                 url={event.url}
                                 linkTo={`/eventos/${event.id}`}
                                 textButton={"Ver más"}
