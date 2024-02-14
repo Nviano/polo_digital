@@ -17,8 +17,7 @@ export default function ClientDetail() {
     setEditingClient({ ...client, [e.target.name]: e.target.value });
   }
 
-  async function updateClient(e) {
-    e.preventDefault();
+  async function updateClient() {
     try {
       const response = await fetch(`${host}/clientes/update/${id}`, {
         method: "POST",
@@ -27,8 +26,8 @@ export default function ClientDetail() {
           "Content-Type": "application/json",
         },
       });
-      const result = await response.json();
-      if (result.status === 200) {
+  
+      if (response.status === 200) {
         setClient(editingClient);
         setIsUpdated(!isUpdated);
       }
@@ -48,7 +47,7 @@ export default function ClientDetail() {
       }
     }
     fetchClient();
-  }, [id, client, isUpdated]);
+  }, [id]);
 
   return client ? (
     <ClientDetailView
