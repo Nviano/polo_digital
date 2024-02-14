@@ -19,6 +19,8 @@ export default function ClientsView({ clients }) {
                 description={client.descripcion}
                 url={client.url}
                 phone={client.telefono}
+                textButton={"Ver más"}
+                linkTo={`/clientes/${client.id}`}
               />
             </Grid>
           ))
