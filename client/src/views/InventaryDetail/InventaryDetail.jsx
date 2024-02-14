@@ -74,6 +74,7 @@ export default function InventaryDetails() {
       } else toast.error(respuesta.message);
     } catch (error) {
       console.log(error.message);
+      toast.error(error.message)
     }
   }
 

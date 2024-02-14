@@ -1,19 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Box, Button, Grid, Paper, TextField, Typography } from '@mui/material';
 import { host } from "../../const/host"
 import BoxComponents from "../../components/BoxComponents/BoxComponents"
+import toast from 'react-hot-toast';
 
 export default function EventDetail() {
     const [evento, setEvento] = useState(null);
     const [editingEvento, setEditingEvento] = useState(evento);
     const [editIsOpen, setEditIsOpen] = useState(false);
     const { id } = useParams();
+
     useEffect(() => {
         async function fetchEvento() {
             try {
                 const response = await fetch(`${host}/gestion/eventos/${id}`);
                 const data = await response.json();
+                
                 setEvento(data);
                 setEditingEvento(data);
             } catch (error) {
@@ -45,6 +48,7 @@ export default function EventDetail() {
                     },
                 });
                 if (response.ok) {
+                    toast.success("Información actualizada");
                     setEvento(editingEvento);
                     setEditIsOpen(false);
                 }
