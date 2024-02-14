@@ -59,9 +59,9 @@ export default function EventDetail() {
             {evento && (
                 <Grid container display="flex" justifyContent="center" p={6}>
                     <Grid item md={12}>
-                        <Paper elevation={6} sx={{ p: 2, textAlign: "center" }}>
-                            <Grid item sx={{ display: "flex", flexDirection: "column", p: 6 }}>
-                                <Box item sx={{ display: "flex", flexDirection: "column", p: 2, alignItems: "center", justifyContent: "space-around", gap: 4 }}>
+                        <Paper elevation={6} sx={{ p: 2 }}>
+                            <Grid item >
+                                <Box sx={{ display: "flex", flexDirection: "column", p: 2, alignItems: "center", justifyContent: "space-around", gap: 4 }}>
                                     <img src={image} alt="Evento" style={{ maxWidth: '800px' }} />
                                     <Typography variant="h5">{evento.eventosnombre}</Typography>
                                 </Box>
