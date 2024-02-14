@@ -3,7 +3,6 @@ import Skeleton from "../../components/ui/Skeleton/Skeleton"
 import { host } from "../../const/host"
 import CardInventary from "../../components/Card/CardInventary"
 
-
 export default function InventaryView({ inventary }) {
        
     return (
@@ -20,6 +19,7 @@ export default function InventaryView({ inventary }) {
                             name = {inventary.nombre}
                             description = {inventary.marca + " " + inventary.referencia}
                             clienteid = {"Asignado a: " + inventary.razon_social}
+                            linkTo={`${inventary.id}`}
                         />
                     </Grid>
                     

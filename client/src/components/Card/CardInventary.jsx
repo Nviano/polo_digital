@@ -1,11 +1,19 @@
-import { Link, Card as MuiCard } from "@mui/material";
+import { Card as MuiCard } from "@mui/material";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import { Link } from "react-router-dom";
 
-export default function CardInventary({ image, name, description, state, clienteid }) {
+export default function CardInventary({ 
+    image, 
+    name, 
+    description, 
+    state, 
+    clienteid, 
+    linkTo,
+}) {
 
   return (
     <MuiCard elevation={6}>
@@ -43,9 +51,7 @@ export default function CardInventary({ image, name, description, state, cliente
         </Typography>
       </CardContent>
       <CardActions>
-        <Link to="/gestion/inventario/:id">
-         <Button size="small" >Ver detalle</Button>
-        </Link>
+         <Button size="small" component={Link} to={linkTo}>Ver detalle</Button>
       </CardActions>
     </MuiCard>
   );

@@ -14,18 +14,19 @@ export default function ClientDetailView({
       <Grid>
         <Paper elevation={3} sx={{ marginTop: "64px" }}>
           <Grid>
-            <Grid
+            <Box
               sx={{
                 display: "flex",
-                justifyContent: "space-around",
+                flexDirection: "column",
+                p: 2,
                 alignItems: "center",
+                justifyContent: "space-around",
+                gap: 4,
               }}
             >
               <img src={`${host}/${client.images}`} />
-              <Box>
-                <Typography variant="h5">{client.razon_social}</Typography>
-              </Box>
-            </Grid>
+              <Typography variant="h5">{client.razon_social}</Typography>
+            </Box>
             <Grid
               sx={{
                 display: "flex",
@@ -36,10 +37,10 @@ export default function ClientDetailView({
                 padding: "24px",
               }}
             >
-              <BoxComponents label="Empleados" Data={client.numero_empleados} />
-              <BoxComponents label="Sector" Data={client.sector} />
-              <BoxComponents label="Teléfono" Data={client.telefono} />
-              <BoxComponents label="CIF" Data={client.CIF} />
+              <BoxComponents label="Empleados" data={client.numero_empleados} />
+              <BoxComponents label="Sector" data={client.sector} />
+              <BoxComponents label="Teléfono" data={client.telefono} />
+              <BoxComponents label="CIF" data={client.CIF} />
               <Box>
                 <Button variant="contained" onClick={handleUpdate}>
                   Editar
@@ -47,54 +48,74 @@ export default function ClientDetailView({
               </Box>
             </Grid>
           </Grid>
+          <Box sx={{ display: "flex", p: 6, justifyContent: "end" }}>
+            {isUpdated ? (
+              <>
+                <Button
+                  variant="contained"
+                  onClick={handleUpdate}
+                  sx={{ mr: 2 }}
+                >
+                  Cancelar
+                </Button>
+                <Button variant="contained" onClick={() => updateClient()}>
+                  Guardar
+                </Button>
+              </>
+            ) : (
+              <Button variant="contained" onClick={handleUpdate}>
+                Editar
+              </Button>
+            )}
+          </Box>
         </Paper>
       </Grid>
       {isUpdated ? (
-        <form
-          style={{
-            display: "flex",
-            justifyContent: "space-around",
-            alignItems: "center",
-            gap: "16px",
-            marginLeft: "32px",
-            padding: "24px",
-          }}
-          onSubmit={(e) => updateClient(e)}
+        <Box
+          component="form"
+          sx={{ display: "flex", flexDirection: "column", gap: "10px", p: 2 }}
         >
           <TextField
-            label="Razon social"
+            label="Razon Social"
+            variant="outlined"
             defaultValue={client.razon_social}
+            fullWidth
+            onChange={modifyClient}
             name="razon_social"
-            onChange={(e) => modifyClient(e)}
-          ></TextField>
+          />
           <TextField
             label="Empleados"
+            type="text"
             defaultValue={client.numero_empleados}
-            name="numeroempleados"
-            onChange={(e) => modifyClient(e)}
-          ></TextField>
+            fullWidth
+            onChange={modifyClient}
+            name="numero_empleados"
+          />
           <TextField
             label="Sector"
+            type="text"
             defaultValue={client.sector}
+            fullWidth
+            onChange={modifyClient}
             name="sector"
-            onChange={(e) => modifyClient(e)}
-          ></TextField>
+          />
           <TextField
             label="Teléfono"
+            type="number"
             defaultValue={client.telefono}
+            fullWidth
+            onChange={modifyClient}
             name="telefono"
-            onChange={(e) => modifyClient(e)}
-          ></TextField>
+          />
           <TextField
             label="CIF"
+            type="text"
             defaultValue={client.CIF}
+            fullWidth
+            onChange={modifyClient}
             name="CIF"
-            onChange={(e) => modifyClient(e)}
-          ></TextField>
-          <Button variant="contained" type="submit">
-            Guardar
-          </Button>
-        </form>
+          />
+        </Box>
       ) : null}
     </Grid>
   );
