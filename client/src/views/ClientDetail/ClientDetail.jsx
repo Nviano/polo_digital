@@ -3,12 +3,21 @@ import { useParams } from "react-router-dom";
 import { host } from "../../const/host";
 import ClientDetailView from "./ClientDetailView";
 import Skeleton from "../../components/ui/Skeleton/Skeleton";
+import { useTranslation, Trans } from "react-i18next";
 
 export default function ClientDetail() {
   const { id } = useParams();
   const [client, setClient] = useState(null);
   const [editingClient, setEditingClient] = useState(client);
   const [isUpdated, setIsUpdated] = useState(false);
+
+  const { t, i18n } = useTranslation("clientDetail");
+
+  function handleLanguage() {
+    i18n.language === "es" ?
+      i18n.changeLanguage("en")
+      : i18n.changeLanguage("es");
+  }
 
   function handleUpdate() {
     setIsUpdated(!isUpdated);
@@ -26,7 +35,7 @@ export default function ClientDetail() {
           "Content-Type": "application/json",
         },
       });
-  
+
       if (response.status === 200) {
         setClient(editingClient);
         setIsUpdated(!isUpdated);
@@ -57,6 +66,8 @@ export default function ClientDetail() {
       isUpdated={isUpdated}
       updateClient={updateClient}
       modifyClient={modifyClient}
+      handleLanguage={handleLanguage}
+      t={t}
     />
   ) : (
     <Skeleton></Skeleton>

@@ -1,0 +1,11 @@
+    {
+        "Empleados": "Employees",
+        "Sector": "Sector",
+        "Teléfono": "Phone Number",
+        "CIF": "CIF",
+        "Editar": "Edit",
+        "Razón Social": "Bussiness Name",
+        "Cancelar" : "Cancel",
+        "Guardar": "Save",
+        "Cambiar idioma": "Switch language"
+    }

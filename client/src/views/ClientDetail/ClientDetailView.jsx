@@ -8,6 +8,8 @@ export default function ClientDetailView({
   isUpdated,
   updateClient,
   modifyClient,
+  t,
+  handleLanguage,
 }) {
   return (
     <Grid>
@@ -37,13 +39,13 @@ export default function ClientDetailView({
                 padding: "24px",
               }}
             >
-              <BoxComponents label="Empleados" data={client.numero_empleados} />
-              <BoxComponents label="Sector" data={client.sector} />
-              <BoxComponents label="Teléfono" data={client.telefono} />
-              <BoxComponents label="CIF" data={client.CIF} />
+              <BoxComponents label={t("Empleados")} data={client.numero_empleados} />
+              <BoxComponents label={t("Sector")} data={client.sector} />
+              <BoxComponents label={t("Teléfono")} data={client.telefono} />
+              <BoxComponents label={t("CIF")} data={client.CIF} />
               <Box>
                 <Button variant="contained" onClick={handleUpdate}>
-                  Editar
+                  {t("Editar")}
                 </Button>
               </Box>
             </Grid>
@@ -56,17 +58,20 @@ export default function ClientDetailView({
                   onClick={handleUpdate}
                   sx={{ mr: 2 }}
                 >
-                  Cancelar
+                  {t("Cancelar")}
                 </Button>
                 <Button variant="contained" onClick={() => updateClient()}>
-                  Guardar
+                  {t("Guardar")}
                 </Button>
               </>
             ) : (
               <Button variant="contained" onClick={handleUpdate}>
-                Editar
+                {t("Editar")}
               </Button>
             )}
+            <Button variant="contained" onClick={handleLanguage}>
+              {t("Cambiar idioma")}
+            </Button>
           </Box>
         </Paper>
       </Grid>
@@ -76,7 +81,7 @@ export default function ClientDetailView({
           sx={{ display: "flex", flexDirection: "column", gap: "10px", p: 2 }}
         >
           <TextField
-            label="Razon Social"
+            label={t("Razon Social")}
             variant="outlined"
             defaultValue={client.razon_social}
             fullWidth
@@ -84,7 +89,7 @@ export default function ClientDetailView({
             name="razon_social"
           />
           <TextField
-            label="Empleados"
+            label={t("Empleados")}
             type="text"
             defaultValue={client.numero_empleados}
             fullWidth
